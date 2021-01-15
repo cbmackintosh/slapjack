@@ -58,11 +58,6 @@ class Game {
       {num: 'K', suit: 'red'},
     ];
   }
-  shuffleDeck() {
-    for (var i = 0; i < this.deck.length; i++) {
-      this.deck.splice(i, 0, this.deck.splice(Math.floor(Math.random() * this.deck.length), 1)[0]);
-    }
-  }
   dealFullDeck() {
     for (var i = 0; i < 52; i++) {
       if (i % 2 === 0) {
