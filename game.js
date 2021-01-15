@@ -1,6 +1,8 @@
 
 class Game {
-  constructor() {
+  constructor(player1, player2) {
+    this.player1 = player1.name;
+    this.player2 = player2.name;
     this.deck = [
       {num: '1', suit: 'blue'},
       {num: '2', suit: 'blue'},
@@ -54,6 +56,20 @@ class Game {
       {num: 'J', suit: 'red'},
       {num: 'Q', suit: 'red'},
       {num: 'K', suit: 'red'},
-    ]
+    ];
+  }
+  shuffleDeck() {
+    for (var i = 0; i < this.deck.length; i++) {
+      this.deck.splice(i, 0, this.deck.splice(Math.floor(Math.random() * this.deck.length), 1)[0]);
+    }
+  }
+  dealFullDeck() {
+    for (var i = 0; i < 52; i++) {
+      if (i % 2 === 0) {
+        player1.hand.push(this.deck.splice(0, 1)[0]);
+      } else {
+        player2.hand.push(this.deck.splice(0, 1)[0]);
+      }
+    }
   }
 }
