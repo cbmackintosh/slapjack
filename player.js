@@ -6,6 +6,7 @@ class Player {
     this.wins = 0;
     this.id = Date.now();
   }
+
   playCard() {
     if (currentGame.activePlayer === this) {
       console.log(this.hand[this.hand.length - 1]);
@@ -15,6 +16,7 @@ class Player {
       console.log(`It's not your turn`);
     }
   }
+
   slap() {
     currentGame.activePlayer = null;
     currentGame.checkSlap(this);

@@ -5,60 +5,61 @@ class Game {
     this.player2 = new Player('player2');
     this.activePlayer = null;
     this.deck = [
-      {num: '1', suit: 'blue'},
-      {num: '2', suit: 'blue'},
-      {num: '3', suit: 'blue'},
-      {num: '4', suit: 'blue'},
-      {num: '5', suit: 'blue'},
-      {num: '6', suit: 'blue'},
-      {num: '7', suit: 'blue'},
-      {num: '8', suit: 'blue'},
-      {num: '9', suit: 'blue'},
-      {num: '10', suit: 'blue'},
-      {num: 'J', suit: 'blue'},
-      {num: 'Q', suit: 'blue'},
-      {num: 'K', suit: 'blue'},
-      {num: '1', suit: 'gold'},
-      {num: '2', suit: 'gold'},
-      {num: '3', suit: 'gold'},
-      {num: '4', suit: 'gold'},
-      {num: '5', suit: 'gold'},
-      {num: '6', suit: 'gold'},
-      {num: '7', suit: 'gold'},
-      {num: '8', suit: 'gold'},
-      {num: '9', suit: 'gold'},
-      {num: '10', suit: 'gold'},
-      {num: 'J', suit: 'gold'},
-      {num: 'Q', suit: 'gold'},
-      {num: 'K', suit: 'gold'},
-      {num: '1', suit: 'green'},
-      {num: '2', suit: 'green'},
-      {num: '3', suit: 'green'},
-      {num: '4', suit: 'green'},
-      {num: '5', suit: 'green'},
-      {num: '6', suit: 'green'},
-      {num: '7', suit: 'green'},
-      {num: '8', suit: 'green'},
-      {num: '9', suit: 'green'},
-      {num: '10', suit: 'green'},
-      {num: 'J', suit: 'green'},
-      {num: 'Q', suit: 'green'},
-      {num: 'K', suit: 'green'},
-      {num: '1', suit: 'red'},
-      {num: '2', suit: 'red'},
-      {num: '3', suit: 'red'},
-      {num: '4', suit: 'red'},
-      {num: '5', suit: 'red'},
-      {num: '6', suit: 'red'},
-      {num: '7', suit: 'red'},
-      {num: '8', suit: 'red'},
-      {num: '9', suit: 'red'},
-      {num: '10', suit: 'red'},
-      {num: 'J', suit: 'red'},
-      {num: 'Q', suit: 'red'},
-      {num: 'K', suit: 'red'},
+      {num: '1', suit: 'blue', img:'./assets/blue-01.png'},
+      {num: '2', suit: 'blue', img:'./assets/blue-02.png'},
+      {num: '3', suit: 'blue', img:'./assets/blue-03.png'},
+      {num: '4', suit: 'blue', img:'./assets/blue-04.png'},
+      {num: '5', suit: 'blue', img:'./assets/blue-05.png'},
+      {num: '6', suit: 'blue', img:'./assets/blue-06.png'},
+      {num: '7', suit: 'blue', img:'./assets/blue-07.png'},
+      {num: '8', suit: 'blue', img:'./assets/blue-08.png'},
+      {num: '9', suit: 'blue', img:'./assets/blue-09.png'},
+      {num: '10', suit: 'blue', img:'./assets/blue-10.png'},
+      {num: 'J', suit: 'blue', img:'./assets/blue-jack.png'},
+      {num: 'Q', suit: 'blue', img:'./assets/blue-queem.png'},
+      {num: 'K', suit: 'blue', img:'./assets/blue-king.png'},
+      {num: '1', suit: 'gold', img:'./assets/gold-01.png'},
+      {num: '2', suit: 'gold', img:'./assets/gold-02.png'},
+      {num: '3', suit: 'gold', img:'./assets/gold-03.png'},
+      {num: '4', suit: 'gold', img:'./assets/gold-04.png'},
+      {num: '5', suit: 'gold', img:'./assets/gold-05.png'},
+      {num: '6', suit: 'gold', img:'./assets/gold-06.png'},
+      {num: '7', suit: 'gold', img:'./assets/gold-07.png'},
+      {num: '8', suit: 'gold', img:'./assets/gold-08.png'},
+      {num: '9', suit: 'gold', img:'./assets/gold-09.png'},
+      {num: '10', suit: 'gold', img:'./assets/gold-10.png'},
+      {num: 'J', suit: 'gold', img:'./assets/gold-jack.png'},
+      {num: 'Q', suit: 'gold', img:'./assets/gold-queen.png'},
+      {num: 'K', suit: 'gold', img:'./assets/gold-king.png'},
+      {num: '1', suit: 'green', img:'./assets/green-01.png'},
+      {num: '2', suit: 'green', img:'./assets/green-02.png'},
+      {num: '3', suit: 'green', img:'./assets/green-03.png'},
+      {num: '4', suit: 'green', img:'./assets/green-04.png'},
+      {num: '5', suit: 'green', img:'./assets/green-05.png'},
+      {num: '6', suit: 'green', img:'./assets/green-06.png'},
+      {num: '7', suit: 'green', img:'./assets/green-07.png'},
+      {num: '8', suit: 'green', img:'./assets/green-08.png'},
+      {num: '9', suit: 'green', img:'./assets/green-09.png'},
+      {num: '10', suit: 'green', img:'./assets/green-10.png'},
+      {num: 'J', suit: 'green', img:'./assets/green-jack.png'},
+      {num: 'Q', suit: 'green', img:'./assets/green-queen.png'},
+      {num: 'K', suit: 'green', img:'./assets/green-king.png'},
+      {num: '1', suit: 'red', img:'./assets/red-01.png'},
+      {num: '2', suit: 'red', img:'./assets/red-02.png'},
+      {num: '3', suit: 'red', img:'./assets/red-03.png'},
+      {num: '4', suit: 'red', img:'./assets/red-04.png'},
+      {num: '5', suit: 'red', img:'./assets/red-05.png'},
+      {num: '6', suit: 'red', img:'./assets/red-06.png'},
+      {num: '7', suit: 'red', img:'./assets/red-07.png'},
+      {num: '8', suit: 'red', img:'./assets/red-08.png'},
+      {num: '9', suit: 'red', img:'./assets/red-09.png'},
+      {num: '10', suit: 'red', img:'./assets/red-10.png'},
+      {num: 'J', suit: 'red', img:'./assets/red-jack.png'},
+      {num: 'Q', suit: 'red', img:'./assets/red-queen.png'},
+      {num: 'K', suit: 'red', img:'./assets/red-king.png'},
     ];
   }
+
   dealFullDeck() {
     shuffleCards(this.deck);
     for (var i = 0; i < 52; i++) {
@@ -70,6 +71,7 @@ class Game {
     }
     this.activePlayer = this.player1;
   }
+
   changeActivePlayer(player) {
     if (player === this.player1) {
       this.activePlayer = this.player2;
@@ -77,6 +79,7 @@ class Game {
       this.activePlayer = this.player1;
     }
   }
+
   checkSlap(player) {
     if (this.deck[this.deck.length - 1].num === 'J') {
       console.log('slapjack')
@@ -93,11 +96,13 @@ class Game {
       this.changeActivePlayer(player);
     }
   }
+
   winMiddleCards(player) {
     player.hand = player.hand.concat(this.deck.splice(0, this.deck.length));
     shuffleCards(player.hand);
     this.changeActivePlayer(player)
   }
+
   forfeitCard(player) {
     if (player === currentGame.player1) {
       this.player2.hand.unshift(this.player1.hand.pop());
