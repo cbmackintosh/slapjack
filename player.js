@@ -21,4 +21,12 @@ class Player {
     currentGame.activePlayer = null;
     currentGame.checkSlap(this);
   }
+
+  myOpponentIs() {
+    if (this === currentGame.player1) {
+      return currentGame.player2;
+    } else {
+      return currentGame.player1
+    }
+  }
 }

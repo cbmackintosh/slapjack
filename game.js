@@ -73,11 +73,7 @@ class Game {
   }
 
   changeActivePlayer(player) {
-    if (player === this.player1) {
-      this.activePlayer = this.player2;
-    } else {
-      this.activePlayer = this.player1;
-    }
+    this.activePlayer = player.myOpponentIs();
   }
 
   checkSlap(player) {
@@ -104,11 +100,7 @@ class Game {
   }
 
   forfeitCard(player) {
-    if (player === currentGame.player1) {
-      this.player2.hand.unshift(this.player1.hand.pop());
-    } else {
-      this.player1.hand.unshift(this.player2.hand.pop());
-    }
+    player.myOpponentIs().hand.unshift(player.hand.pop())
   }
 
   shuffleCards(cards) {
