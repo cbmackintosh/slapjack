@@ -79,20 +79,30 @@ class Game {
   }
   checkSlap(player) {
     if (this.deck[this.deck.length - 1].num === 'J') {
-      player.hand = player.hand.concat(this.deck.splice(0, this.deck.length));
-      shuffleCards(player.hand);
-      this.changeActivePlayer(player)
+      console.log('slapjack')
+      this.winMiddleCards(player)
     } else if (this.deck.length > 2 && this.deck[this.deck.length - 1].num === this.deck[this.deck.length - 2].num) {
-      player.hand = player.hand.concat(this.deck.splice(0, this.deck.length));
-      shuffleCards(player.hand);
-      this.changeActivePlayer(player)
+      console.log('double')
+      this.winMiddleCards(player)
     } else if (this.deck.length > 3 && this.deck[this.deck.length - 1].num === this.deck[this.deck.length - 3].num) {
-      player.hand = player.hand.concat(this.deck.splice(0, this.deck.length));
-      shuffleCards(player.hand);
-      this.changeActivePlayer(player);
+      console.log('sandwich')
+      this.winMiddleCards(player)
     } else {
-      forfeitCard(player);
+      console.log('bad slap')
+      this.forfeitCard(player);
       this.changeActivePlayer(player);
+    }
+  }
+  winMiddleCards(player) {
+    player.hand = player.hand.concat(this.deck.splice(0, this.deck.length));
+    shuffleCards(player.hand);
+    this.changeActivePlayer(player)
+  }
+  forfeitCard(player) {
+    if (player === currentGame.player1) {
+      this.player2.hand.unshift(this.player1.hand.pop());
+    } else {
+      this.player1.hand.unshift(this.player2.hand.pop());
     }
   }
 }
