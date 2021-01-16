@@ -73,25 +73,24 @@ class Game {
   }
 
   changeActivePlayer(player) {
-    if (player === this.player1) {
-      this.activePlayer = this.player2;
-    } else {
-      this.activePlayer = this.player1;
-    }
+    this.activePlayer = player.myOpponentIs();
   }
 
   checkSlap(player) {
     if (this.deck[this.deck.length - 1].num === 'J') {
       console.log('slapjack')
       this.winMiddleCards(player)
-    } else if (this.deck.length > 2 && this.deck[this.deck.length - 1].num === this.deck[this.deck.length - 2].num) {
+      return 'good-slap'
+    } else if (this.deck.length >= 2 && this.deck[this.deck.length - 1].num === this.deck[this.deck.length - 2].num) {
       console.log('double')
-      this.winMiddleCards(player)
-    } else if (this.deck.length > 3 && this.deck[this.deck.length - 1].num === this.deck[this.deck.length - 3].num) {
+      this.winMiddleCards(player);
+      return 'good-slap'
+    } else if (this.deck.length >= 3 && this.deck[this.deck.length - 1].num === this.deck[this.deck.length - 3].num) {
       console.log('sandwich')
-      this.winMiddleCards(player)
+      this.winMiddleCards(player);
+      return 'good-slap'
     } else {
-      console.log('bad slap')
+      console.log('bad slap');
       this.forfeitCard(player);
       this.changeActivePlayer(player);
     }
@@ -100,15 +99,11 @@ class Game {
   winMiddleCards(player) {
     player.hand = player.hand.concat(this.deck.splice(0, this.deck.length));
     this.shuffleCards(player.hand);
-    this.changeActivePlayer(player)
+    this.changeActivePlayer(player);
   }
 
   forfeitCard(player) {
-    if (player === currentGame.player1) {
-      this.player2.hand.unshift(this.player1.hand.pop());
-    } else {
-      this.player1.hand.unshift(this.player2.hand.pop());
-    }
+    player.myOpponentIs().hand.unshift(player.hand.pop());
   }
 
   shuffleCards(cards) {
@@ -117,4 +112,10 @@ class Game {
     }
   }
 
+  gameOver(winningPlayer) {
+    this.deck = this.deck.concat(winningPlayer.hand.splice(0, winningPlayer.hand.length));
+    this.shuffleCards(this.deck);
+    this.dealFullDeck();
+    console.log('Game reset');
+  }
 }
