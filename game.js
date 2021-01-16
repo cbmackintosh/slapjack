@@ -80,12 +80,15 @@ class Game {
     if (this.deck[this.deck.length - 1].num === 'J') {
       console.log('slapjack')
       this.winMiddleCards(player)
-    } else if (this.deck.length > 2 && this.deck[this.deck.length - 1].num === this.deck[this.deck.length - 2].num) {
+      return 'good-slap'
+    } else if (this.deck.length >= 2 && this.deck[this.deck.length - 1].num === this.deck[this.deck.length - 2].num) {
       console.log('double')
       this.winMiddleCards(player)
-    } else if (this.deck.length > 3 && this.deck[this.deck.length - 1].num === this.deck[this.deck.length - 3].num) {
+      return 'good-slap'
+    } else if (this.deck.length >= 3 && this.deck[this.deck.length - 1].num === this.deck[this.deck.length - 3].num) {
       console.log('sandwich')
       this.winMiddleCards(player)
+      return 'good-slap'
     } else {
       console.log('bad slap')
       this.forfeitCard(player);

@@ -8,18 +8,26 @@ class Player {
   }
 
   playCard() {
-    if (currentGame.activePlayer === this) {
+    if (currentGame.activePlayer === this && this.hand.length > 0) {
       console.log(this.hand[this.hand.length - 1]);
       currentGame.deck.push(this.hand.pop());
       currentGame.changeActivePlayer(this);
+    } else if (currentGame.activePlayer === this && this.hand.length === 0) {
+      console.log(`You have no cards so you pass`);
+      currentGame.changeActivePlayer(this);
     } else {
-      console.log(`It's not your turn`);
+      console.log(`It's not your turn`)
     }
   }
 
   slap() {
     currentGame.activePlayer = null;
-    currentGame.checkSlap(this);
+    if (currentGame.checkSlap(this) === 'good-slap' && this.myOpponentIs().hand.length === 0) {
+      this.wins++
+      console.log(`${this.name} WINS!`)
+    } else {
+      return
+    }
   }
 
   myOpponentIs() {
