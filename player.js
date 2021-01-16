@@ -24,6 +24,7 @@ class Player {
     currentGame.activePlayer = null;
     if (currentGame.checkSlap(this) === 'good-slap' && this.myOpponentIs().hand.length === 0) {
       this.wins++
+      currentGame.gameOver(this);
       console.log(`${this.name} WINS!`)
     } else {
       return

@@ -83,14 +83,14 @@ class Game {
       return 'good-slap'
     } else if (this.deck.length >= 2 && this.deck[this.deck.length - 1].num === this.deck[this.deck.length - 2].num) {
       console.log('double')
-      this.winMiddleCards(player)
+      this.winMiddleCards(player);
       return 'good-slap'
     } else if (this.deck.length >= 3 && this.deck[this.deck.length - 1].num === this.deck[this.deck.length - 3].num) {
       console.log('sandwich')
-      this.winMiddleCards(player)
+      this.winMiddleCards(player);
       return 'good-slap'
     } else {
-      console.log('bad slap')
+      console.log('bad slap');
       this.forfeitCard(player);
       this.changeActivePlayer(player);
     }
@@ -99,11 +99,11 @@ class Game {
   winMiddleCards(player) {
     player.hand = player.hand.concat(this.deck.splice(0, this.deck.length));
     this.shuffleCards(player.hand);
-    this.changeActivePlayer(player)
+    this.changeActivePlayer(player);
   }
 
   forfeitCard(player) {
-    player.myOpponentIs().hand.unshift(player.hand.pop())
+    player.myOpponentIs().hand.unshift(player.hand.pop());
   }
 
   shuffleCards(cards) {
@@ -112,4 +112,10 @@ class Game {
     }
   }
 
+  gameOver(winningPlayer) {
+    this.deck = this.deck.concat(winningPlayer.hand.splice(0, winningPlayer.hand.length));
+    this.shuffleCards(this.deck);
+    this.dealFullDeck();
+    console.log('Game reset');
+  }
 }
