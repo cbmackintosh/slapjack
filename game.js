@@ -61,7 +61,7 @@ class Game {
   }
 
   dealFullDeck() {
-    shuffleCards(this.deck);
+    this.shuffleCards(this.deck);
     for (var i = 0; i < 52; i++) {
       if (i % 2 === 0) {
         this.player1.hand.push(this.deck.pop());
@@ -99,7 +99,7 @@ class Game {
 
   winMiddleCards(player) {
     player.hand = player.hand.concat(this.deck.splice(0, this.deck.length));
-    shuffleCards(player.hand);
+    this.shuffleCards(player.hand);
     this.changeActivePlayer(player)
   }
 
@@ -110,4 +110,11 @@ class Game {
       this.player1.hand.unshift(this.player2.hand.pop());
     }
   }
+
+  shuffleCards(cards) {
+    for (var i = 0; i < cards.length; i++) {
+      cards.splice(i, 0, cards.splice(Math.floor(Math.random() * cards.length), 1)[0]);
+    }
+  }
+
 }
