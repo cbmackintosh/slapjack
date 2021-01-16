@@ -1,8 +1,9 @@
 
 class Game {
-  constructor(player1, player2) {
-    this.player1 = player1.name;
-    this.player2 = player2.name;
+  constructor() {
+    this.player1 = new Player('player1');
+    this.player2 = new Player('player2');
+    this.activePlayer = null;
     this.deck = [
       {num: '1', suit: 'blue'},
       {num: '2', suit: 'blue'},
@@ -59,12 +60,39 @@ class Game {
     ];
   }
   dealFullDeck() {
+    shuffleCards(this.deck);
     for (var i = 0; i < 52; i++) {
       if (i % 2 === 0) {
-        player1.hand.push(this.deck.splice(0, 1)[0]);
+        this.player1.hand.push(this.deck.pop());
       } else {
-        player2.hand.push(this.deck.splice(0, 1)[0]);
+        this.player2.hand.push(this.deck.pop());
       }
+    }
+    this.activePlayer = this.player1;
+  }
+  changeActivePlayer(player) {
+    if (player === this.player1) {
+      this.activePlayer = this.player2;
+    } else {
+      this.activePlayer = this.player1;
+    }
+  }
+  checkSlap(player) {
+    if (this.deck[this.deck.length - 1].num === 'J') {
+      player.hand = player.hand.concat(this.deck.splice(0, this.deck.length));
+      shuffleCards(player.hand);
+      this.changeActivePlayer(player)
+    } else if (this.deck.length > 2 && this.deck[this.deck.length - 1].num === this.deck[this.deck.length - 2].num) {
+      player.hand = player.hand.concat(this.deck.splice(0, this.deck.length));
+      shuffleCards(player.hand);
+      this.changeActivePlayer(player)
+    } else if (this.deck.length > 3 && this.deck[this.deck.length - 1].num === this.deck[this.deck.length - 3].num) {
+      player.hand = player.hand.concat(this.deck.splice(0, this.deck.length));
+      shuffleCards(player.hand);
+      this.changeActivePlayer(player);
+    } else {
+      forfeitCard(player);
+      this.changeActivePlayer(player);
     }
   }
 }
