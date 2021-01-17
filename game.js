@@ -74,23 +74,25 @@ class Game {
 
   changeActivePlayer(player) {
     this.activePlayer = player.myOpponentIs();
+    console.log(`IT IS ${this.activePlayer.name}'s TURN`);
   }
 
-  checkSlap(player) {
+  slap(player) {
+    currentGame.activePlayer = null;
     if (this.deck[this.deck.length - 1].num === 'J') {
-      console.log('slapjack')
+      console.log(`${player.name} - SLAPJACK`)
       this.winMiddleCards(player)
-      return 'good-slap'
+      return this.checkWin(player);
     } else if (this.deck.length >= 2 && this.deck[this.deck.length - 1].num === this.deck[this.deck.length - 2].num) {
-      console.log('double')
+      console.log(`${player.name} - DOUBLE`)
       this.winMiddleCards(player);
-      return 'good-slap'
+      return this.checkWin(player);
     } else if (this.deck.length >= 3 && this.deck[this.deck.length - 1].num === this.deck[this.deck.length - 3].num) {
-      console.log('sandwich')
+      console.log(`${player.name} - SANDWHICH`)
       this.winMiddleCards(player);
-      return 'good-slap'
+      return this.checkWin(player);
     } else {
-      console.log('bad slap');
+      console.log(`BAD SLAP FROM ${player.name}. FORFEITS CARD ${player.hand[player.hand.length - 1].num} OF ${player.hand[player.hand.length - 1].suit} TO ${player.myOpponentIs().name}`);
       this.forfeitCard(player);
       this.changeActivePlayer(player);
     }
@@ -109,6 +111,18 @@ class Game {
   shuffleCards(cards) {
     for (var i = 0; i < cards.length; i++) {
       cards.splice(i, 0, cards.splice(Math.floor(Math.random() * cards.length), 1)[0]);
+    }
+  }
+
+  checkWin(player) {
+    if (player.myOpponentIs().hand.length === 0) {
+      console.log(`${player.name} WINS!`);
+      player.wins++
+      player.saveWinsToStorage();
+      this.gameOver(player);
+      return 'winning-slap'
+    } else {
+      return 'good-slap'
     }
   }
 
