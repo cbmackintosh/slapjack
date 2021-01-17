@@ -16,7 +16,7 @@ class Game {
       {num: '9', suit: 'blue', img:'./assets/blue-09.png'},
       {num: '10', suit: 'blue', img:'./assets/blue-10.png'},
       {num: 'J', suit: 'blue', img:'./assets/blue-jack.png'},
-      {num: 'Q', suit: 'blue', img:'./assets/blue-queem.png'},
+      {num: 'Q', suit: 'blue', img:'./assets/blue-queen.png'},
       {num: 'K', suit: 'blue', img:'./assets/blue-king.png'},
       {num: '1', suit: 'gold', img:'./assets/gold-01.png'},
       {num: '2', suit: 'gold', img:'./assets/gold-02.png'},
