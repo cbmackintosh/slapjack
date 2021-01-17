@@ -1,0 +1,56 @@
+
+* {
+  border: 2px solid red;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 95vh;
+}
+
+.game-event-log {
+  width: 95%;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 5px;
+}
+
+main {
+  height: 80%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 5px;
+}
+
+.player-one,
+.player-two,
+.middle-pile-container {
+  height: 90%;
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  width: 60%;
+  height: 60%;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 1px solid black;
+}
+
+img {
+  height: auto;
+  width: 100%; */
+}
