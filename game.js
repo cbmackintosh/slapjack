@@ -89,7 +89,7 @@ class Game {
     } else if (this.deck.length >= 3 && this.deck[this.deck.length - 1].num === this.deck[this.deck.length - 3].num) {
       console.log(`${player.name} - SANDWHICH`);
       this.winMiddleCards(player)
-      return 'sandwhich'
+      return 'sandwich'
     } else {
       console.log(`BAD SLAP FROM ${player.name}. FORFEITS CARD ${player.hand[player.hand.length - 1].num} OF ${player.hand[player.hand.length - 1].suit} TO ${player.myOpponentIs().name}`)
       this.forfeitCard(player);
