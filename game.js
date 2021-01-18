@@ -1,62 +1,62 @@
 
 class Game {
   constructor() {
-    this.player1 = new Player('player1');
-    this.player2 = new Player('player2');
+    this.player1 = new Player('PLAYER 1');
+    this.player2 = new Player('PLAYER 2');
     this.activePlayer = null;
     this.deck = [
-      {num: '1', suit: 'blue', img:'./assets/blue-01.png'},
-      {num: '2', suit: 'blue', img:'./assets/blue-02.png'},
-      {num: '3', suit: 'blue', img:'./assets/blue-03.png'},
-      {num: '4', suit: 'blue', img:'./assets/blue-04.png'},
-      {num: '5', suit: 'blue', img:'./assets/blue-05.png'},
-      {num: '6', suit: 'blue', img:'./assets/blue-06.png'},
-      {num: '7', suit: 'blue', img:'./assets/blue-07.png'},
-      {num: '8', suit: 'blue', img:'./assets/blue-08.png'},
-      {num: '9', suit: 'blue', img:'./assets/blue-09.png'},
-      {num: '10', suit: 'blue', img:'./assets/blue-10.png'},
-      {num: 'J', suit: 'blue', img:'./assets/blue-jack.png'},
-      {num: 'Q', suit: 'blue', img:'./assets/blue-queen.png'},
-      {num: 'K', suit: 'blue', img:'./assets/blue-king.png'},
-      {num: '1', suit: 'gold', img:'./assets/gold-01.png'},
-      {num: '2', suit: 'gold', img:'./assets/gold-02.png'},
-      {num: '3', suit: 'gold', img:'./assets/gold-03.png'},
-      {num: '4', suit: 'gold', img:'./assets/gold-04.png'},
-      {num: '5', suit: 'gold', img:'./assets/gold-05.png'},
-      {num: '6', suit: 'gold', img:'./assets/gold-06.png'},
-      {num: '7', suit: 'gold', img:'./assets/gold-07.png'},
-      {num: '8', suit: 'gold', img:'./assets/gold-08.png'},
-      {num: '9', suit: 'gold', img:'./assets/gold-09.png'},
-      {num: '10', suit: 'gold', img:'./assets/gold-10.png'},
-      {num: 'J', suit: 'gold', img:'./assets/gold-jack.png'},
-      {num: 'Q', suit: 'gold', img:'./assets/gold-queen.png'},
-      {num: 'K', suit: 'gold', img:'./assets/gold-king.png'},
-      {num: '1', suit: 'green', img:'./assets/green-01.png'},
-      {num: '2', suit: 'green', img:'./assets/green-02.png'},
-      {num: '3', suit: 'green', img:'./assets/green-03.png'},
-      {num: '4', suit: 'green', img:'./assets/green-04.png'},
-      {num: '5', suit: 'green', img:'./assets/green-05.png'},
-      {num: '6', suit: 'green', img:'./assets/green-06.png'},
-      {num: '7', suit: 'green', img:'./assets/green-07.png'},
-      {num: '8', suit: 'green', img:'./assets/green-08.png'},
-      {num: '9', suit: 'green', img:'./assets/green-09.png'},
-      {num: '10', suit: 'green', img:'./assets/green-10.png'},
-      {num: 'J', suit: 'green', img:'./assets/green-jack.png'},
-      {num: 'Q', suit: 'green', img:'./assets/green-queen.png'},
-      {num: 'K', suit: 'green', img:'./assets/green-king.png'},
-      {num: '1', suit: 'red', img:'./assets/red-01.png'},
-      {num: '2', suit: 'red', img:'./assets/red-02.png'},
-      {num: '3', suit: 'red', img:'./assets/red-03.png'},
-      {num: '4', suit: 'red', img:'./assets/red-04.png'},
-      {num: '5', suit: 'red', img:'./assets/red-05.png'},
-      {num: '6', suit: 'red', img:'./assets/red-06.png'},
-      {num: '7', suit: 'red', img:'./assets/red-07.png'},
-      {num: '8', suit: 'red', img:'./assets/red-08.png'},
-      {num: '9', suit: 'red', img:'./assets/red-09.png'},
-      {num: '10', suit: 'red', img:'./assets/red-10.png'},
-      {num: 'J', suit: 'red', img:'./assets/red-jack.png'},
-      {num: 'Q', suit: 'red', img:'./assets/red-queen.png'},
-      {num: 'K', suit: 'red', img:'./assets/red-king.png'},
+      {num: 'ACE', suit: 'BLUE', img:'./assets/blue-01.png'},
+      {num: '2', suit: 'BLUE', img:'./assets/blue-02.png'},
+      {num: '3', suit: 'BLUE', img:'./assets/blue-03.png'},
+      {num: '4', suit: 'BLUE', img:'./assets/blue-04.png'},
+      {num: '5', suit: 'BLUE', img:'./assets/blue-05.png'},
+      {num: '6', suit: 'BLUE', img:'./assets/blue-06.png'},
+      {num: '7', suit: 'BLUE', img:'./assets/blue-07.png'},
+      {num: '8', suit: 'BLUE', img:'./assets/blue-08.png'},
+      {num: '9', suit: 'BLUE', img:'./assets/blue-09.png'},
+      {num: '10', suit: 'BLUE', img:'./assets/blue-10.png'},
+      {num: 'JACK', suit: 'BLUE', img:'./assets/blue-jack.png'},
+      {num: 'QUEEN', suit: 'BLUE', img:'./assets/blue-queen.png'},
+      {num: 'KING', suit: 'BLUE', img:'./assets/blue-king.png'},
+      {num: 'ACE', suit: 'GOLD', img:'./assets/gold-01.png'},
+      {num: '2', suit: 'GOLD', img:'./assets/gold-02.png'},
+      {num: '3', suit: 'GOLD', img:'./assets/gold-03.png'},
+      {num: '4', suit: 'GOLD', img:'./assets/gold-04.png'},
+      {num: '5', suit: 'GOLD', img:'./assets/gold-05.png'},
+      {num: '6', suit: 'GOLD', img:'./assets/gold-06.png'},
+      {num: '7', suit: 'GOLD', img:'./assets/gold-07.png'},
+      {num: '8', suit: 'GOLD', img:'./assets/gold-08.png'},
+      {num: '9', suit: 'GOLD', img:'./assets/gold-09.png'},
+      {num: '10', suit: 'GOLD', img:'./assets/gold-10.png'},
+      {num: 'JACK', suit: 'GOLD', img:'./assets/gold-jack.png'},
+      {num: 'QUEEN', suit: 'GOLD', img:'./assets/gold-queen.png'},
+      {num: 'KING', suit: 'GOLD', img:'./assets/gold-king.png'},
+      {num: 'ACE', suit: 'GREEN', img:'./assets/green-01.png'},
+      {num: '2', suit: 'GREEN', img:'./assets/green-02.png'},
+      {num: '3', suit: 'GREEN', img:'./assets/green-03.png'},
+      {num: '4', suit: 'GREEN', img:'./assets/green-04.png'},
+      {num: '5', suit: 'GREEN', img:'./assets/green-05.png'},
+      {num: '6', suit: 'GREEN', img:'./assets/green-06.png'},
+      {num: '7', suit: 'GREEN', img:'./assets/green-07.png'},
+      {num: '8', suit: 'GREEN', img:'./assets/green-08.png'},
+      {num: '9', suit: 'GREEN', img:'./assets/green-09.png'},
+      {num: '10', suit: 'GREEN', img:'./assets/green-10.png'},
+      {num: 'JACK', suit: 'GREEN', img:'./assets/green-jack.png'},
+      {num: 'QUEEN', suit: 'GREEN', img:'./assets/green-queen.png'},
+      {num: 'KING', suit: 'GREEN', img:'./assets/green-king.png'},
+      {num: 'AACE', suit: 'RED', img:'./assets/red-01.png'},
+      {num: '2', suit: 'RED', img:'./assets/red-02.png'},
+      {num: '3', suit: 'RED', img:'./assets/red-03.png'},
+      {num: '4', suit: 'RED', img:'./assets/red-04.png'},
+      {num: '5', suit: 'RED', img:'./assets/red-05.png'},
+      {num: '6', suit: 'RED', img:'./assets/red-06.png'},
+      {num: '7', suit: 'RED', img:'./assets/red-07.png'},
+      {num: '8', suit: 'RED', img:'./assets/red-08.png'},
+      {num: '9', suit: 'RED', img:'./assets/red-09.png'},
+      {num: '10', suit: 'RED', img:'./assets/red-10.png'},
+      {num: 'JACK', suit: 'RED', img:'./assets/red-jack.png'},
+      {num: 'QUEEN', suit: 'RED', img:'./assets/red-queen.png'},
+      {num: 'KING', suit: 'RED', img:'./assets/red-king.png'},
     ];
   }
 
@@ -72,66 +72,53 @@ class Game {
     this.activePlayer = this.player1;
   }
 
-  changeActivePlayer(player) {
-    this.activePlayer = player.myOpponentIs();
-    console.log(`IT IS ${this.activePlayer.name}'s TURN`);
-  }
-
   checkSlap(player) {
-    if (this.deck[this.deck.length - 1].num === 'J') {
-      console.log(`${player.name} - SLAPJACK!`);
+    if (this.deck[this.deck.length - 1].num === 'JACK') {
       this.winMiddleCards(player);
-      return 'slapjack';
+      return `SLAPJACK`;
     } else if (this.deck.length >= 2 && this.deck[this.deck.length - 1].num === this.deck[this.deck.length - 2].num) {
-      console.log(`${player.name} - DOUBLE!`);
       this.winMiddleCards(player);
-      return 'double';
+      return `DOUBLE`;
     } else if (this.deck.length >= 3 && this.deck[this.deck.length - 1].num === this.deck[this.deck.length - 3].num) {
-      console.log(`${player.name} - SANDWHICH`);
       this.winMiddleCards(player)
-      return 'sandwhich'
+      return `SANDWICH`
     } else {
-      console.log(`BAD SLAP FROM ${player.name}. FORFEITS CARD ${player.hand[player.hand.length - 1].num} OF ${player.hand[player.hand.length - 1].suit} TO ${player.myOpponentIs().name}`)
       this.forfeitCard(player);
-      this.changeActivePlayer(player);
-      return 'bad-slap'
+      this.activePlayer = player.myOpponentIs();
+      return `BAD-SLAP`;
     }
   }
 
   endGameCondition1(player) {
-    if (this.deck[this.deck.length - 1].num === 'J') {
-      console.log(`SLAPJACK! ${player.name} STAYS ALIVE!`)
+    if (this.deck[this.deck.length - 1].num === 'JACK') {
       this.winMiddleCards(player);
       this.changeActivePlayer(player);
-      return 'good-slap'
+      return `SAVING-SLAP`
     } else {
-      console.log(`BAD SLAP FROM ${player.name} ---- ${player.myOpponentIs().name} WINS`)
       player.myOpponentIs().wins++;
       player.myOpponentIs().saveWinsToStorage();
       this.gameOver(player.myOpponentIs());
-      return 'winning-slap'
+      return `LOSING-SLAP`
     }
   }
 
   endGameCondition2(player) {
-    if (this.deck[this.deck.length - 1].num === 'J') {
-      console.log(`${player.name} WINS!`)
+    if (this.deck[this.deck.length - 1].num === 'JACK') {
       player.wins++;
       player.saveWinsToStorage();
       this.gameOver(player);
-      return 'winning-slap'
+      return `WINNING-SLAP`
     } else {
-      console.log(`BAD SLAP FROM ${player.name}, FORFEIT CARD TO ${player.myOpponentIs().name}, PLAY RESUMES`)
       this.forfeitCard(player);
       this.changeActivePlayer(player);
-      return 'bad-slap'
+      return `BAD-SLAP`;
     }
   }
 
   winMiddleCards(player) {
     player.hand = player.hand.concat(this.deck.splice(0, this.deck.length));
     this.shuffleCards(player.hand);
-    this.changeActivePlayer(player);
+    this.activePlayer = player.myOpponentIs();
   }
 
   forfeitCard(player) {
@@ -148,6 +135,5 @@ class Game {
     this.deck = this.deck.concat(winningPlayer.hand.splice(0, winningPlayer.hand.length));
     this.shuffleCards(this.deck);
     this.dealFullDeck();
-    console.log('Game reset');
   }
 }

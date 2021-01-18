@@ -8,27 +8,28 @@ class Player {
   }
 
   playCard() {
-    if (currentGame.activePlayer === this && this.hand.length > 0) {
-      console.log(`${this.name} PLAYS THE ${this.hand[this.hand.length - 1].num} OF ${this.hand[this.hand.length - 1].suit}`);
+    if (currentGame.activePlayer === this && this.hand.length > 0 && this.myOpponentIs().hand.length > 0) {
       currentGame.deck.push(this.hand.pop());
-      currentGame.changeActivePlayer(this);
-    } else if (currentGame.activePlayer === this && this.hand.length === 0) {
-      console.log(`${this.name} HAS NO CARDS AND MUST PASS`);
-      currentGame.changeActivePlayer(this);
+      currentGame.activePlayer = this.myOpponentIs();
+      return 'VALID-PLAY';
+    } else if (currentGame.activePlayer === this && this.myOpponentIs().hand.length === 0) {
+      currentGame.deck.push(this.hand.pop());
+      currentGame.activePlayer = this;
+      return 'SKIP-OPPONENT';
     } else {
-      console.log(`IT IS NOT ${this.name}'s TURN`);
+      return 'INVALID-PLAY';
     }
   }
 
   slap() {
-    if (currentGame.deck.length === 0) {
-      return;
-    } else if (this.hand.length === 0) {
+    if (this.hand.length === 0) {
       return currentGame.endGameCondition1(this);
     } else if (this.myOpponentIs().hand.length === 0) {
       return currentGame.endGameCondition2(this);
+    } else if (currentGame.deck.length > 0){
+      return currentGame.checkSlap(this);
     } else {
-      return currentGame.checkSlap(this)
+      return 'INVALID-SLAP';
     }
   }
 
