@@ -1,6 +1,7 @@
 
 var currentGame;
 
+var gameLog = document.querySelector('.game-event-log');
 var middlePile = document.querySelector('.middle-pile');
 var playerOneHand = document.querySelector('.player1-hand');
 var playerTwoHand = document.querySelector('.player2-hand');
@@ -12,29 +13,30 @@ document.addEventListener('keydown', controls)
 window.addEventListener('load', loadGame)
 
 function loadGame() {
-  currentGame = new Game()
-  currentGame.dealFullDeck()
-  playerOneWinCount.innerText = `WINS: ${currentGame.player1.wins}`
-  playerTwoWinCount.innerText = `WINS: ${currentGame.player2.wins}`
+  currentGame = new Game();
+  currentGame.dealFullDeck();
+  playerOneWinCount.innerText = `WINS: ${currentGame.player1.wins}`;
+  playerTwoWinCount.innerText = `WINS: ${currentGame.player2.wins}`;
 }
 
 function controls() {
   if (event.key === 'q') {
-    currentGame.player1.playCard();
+    gameLog.innerText = currentGame.player1.playCard();
     renderCard()
   } else if (event.key === 'p') {
-    currentGame.player2.playCard();
+    gameLog.innerText = currentGame.player2.playCard();
     renderCard()
   } else if (event.key === 'f') {
-    currentGame.player1.slap();
+    gameLog.innerText = currentGame.player1.slap();
   } else if (event.key === 'j') {
-    currentGame.player2.slap();
+    gameLog.innerText = currentGame.player2.slap();
   }
   adjustAllCardsVisibility();
 }
 
 function renderCard() {
   middlePile.src = `${currentGame.deck[currentGame.deck.length - 1].img}`;
+  middlePile.alt = `the ${currentGame.deck[currentGame.deck.length - 1].num} of ${currentGame.deck[currentGame.deck.length - 1].suit}`;
 }
 
 function adjustAllCardsVisibility() {

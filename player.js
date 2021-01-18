@@ -9,14 +9,14 @@ class Player {
 
   playCard() {
     if (currentGame.activePlayer === this && this.hand.length > 0) {
-      console.log(`${this.name} PLAYS THE ${this.hand[this.hand.length - 1].num} OF ${this.hand[this.hand.length - 1].suit}`);
       currentGame.deck.push(this.hand.pop());
       currentGame.changeActivePlayer(this);
+      return `${this.name} PLAYS THE ${currentGame.deck[currentGame.deck.length - 1].num} OF ${currentGame.deck[currentGame.deck.length - 1].suit}`;
     } else if (currentGame.activePlayer === this && this.hand.length === 0) {
-      console.log(`${this.name} HAS NO CARDS AND MUST PASS`);
       currentGame.changeActivePlayer(this);
+      return `${this.name} HAS NO CARDS AND MUST PASS`;
     } else {
-      console.log(`IT IS NOT ${this.name}'s TURN`);
+      return `IT IS NOT ${this.name}'s TURN`;
     }
   }
 
