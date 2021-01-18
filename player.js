@@ -20,6 +20,18 @@ class Player {
     }
   }
 
+  slap() {
+    if (currentGame.deck.length === 0) {
+      return;
+    } else if (this.hand.length === 0) {
+      return currentGame.endGameCondition1(this);
+    } else if (this.myOpponentIs().hand.length === 0) {
+      return currentGame.endGameCondition2(this);
+    } else {
+      return currentGame.checkSlap(this)
+    }
+  }
+
   myOpponentIs() {
     if (this === currentGame.player1) {
       return currentGame.player2;
