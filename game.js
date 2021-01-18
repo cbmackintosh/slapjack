@@ -16,7 +16,7 @@ class Game {
       {num: '9', suit: 'blue', img:'./assets/blue-09.png'},
       {num: '10', suit: 'blue', img:'./assets/blue-10.png'},
       {num: 'J', suit: 'blue', img:'./assets/blue-jack.png'},
-      {num: 'Q', suit: 'blue', img:'./assets/blue-queem.png'},
+      {num: 'Q', suit: 'blue', img:'./assets/blue-queen.png'},
       {num: 'K', suit: 'blue', img:'./assets/blue-king.png'},
       {num: '1', suit: 'gold', img:'./assets/gold-01.png'},
       {num: '2', suit: 'gold', img:'./assets/gold-02.png'},
@@ -74,25 +74,57 @@ class Game {
 
   changeActivePlayer(player) {
     this.activePlayer = player.myOpponentIs();
+    console.log(`IT IS ${this.activePlayer.name}'s TURN`);
   }
 
   checkSlap(player) {
     if (this.deck[this.deck.length - 1].num === 'J') {
-      console.log('slapjack')
-      this.winMiddleCards(player)
-      return 'good-slap'
+      console.log(`${player.name} - SLAPJACK!`);
+      this.winMiddleCards(player);
+      return 'slapjack';
     } else if (this.deck.length >= 2 && this.deck[this.deck.length - 1].num === this.deck[this.deck.length - 2].num) {
-      console.log('double')
+      console.log(`${player.name} - DOUBLE!`);
       this.winMiddleCards(player);
-      return 'good-slap'
+      return 'double';
     } else if (this.deck.length >= 3 && this.deck[this.deck.length - 1].num === this.deck[this.deck.length - 3].num) {
-      console.log('sandwich')
-      this.winMiddleCards(player);
-      return 'good-slap'
+      console.log(`${player.name} - SANDWHICH`);
+      this.winMiddleCards(player)
+      return 'sandwhich'
     } else {
-      console.log('bad slap');
+      console.log(`BAD SLAP FROM ${player.name}. FORFEITS CARD ${player.hand[player.hand.length - 1].num} OF ${player.hand[player.hand.length - 1].suit} TO ${player.myOpponentIs().name}`)
       this.forfeitCard(player);
       this.changeActivePlayer(player);
+      return 'bad-slap'
+    }
+  }
+
+  endGameCondition1(player) {
+    if (this.deck[this.deck.length - 1].num === 'J') {
+      console.log(`SLAPJACK! ${player.name} STAYS ALIVE!`)
+      this.winMiddleCards(player);
+      this.changeActivePlayer(player);
+      return 'good-slap'
+    } else {
+      console.log(`BAD SLAP FROM ${player.name} ---- ${player.myOpponentIs().name} WINS`)
+      player.myOpponentIs().wins++;
+      player.myOpponentIs().saveWinsToStorage();
+      this.gameOver(player.myOpponentIs());
+      return 'winning-slap'
+    }
+  }
+
+  endGameCondition2(player) {
+    if (this.deck[this.deck.length - 1].num === 'J') {
+      console.log(`${player.name} WINS!`)
+      player.wins++;
+      player.saveWinsToStorage();
+      this.gameOver(player);
+      return 'winning-slap'
+    } else {
+      console.log(`BAD SLAP FROM ${player.name}, FORFEIT CARD TO ${player.myOpponentIs().name}, PLAY RESUMES`)
+      this.forfeitCard(player);
+      this.changeActivePlayer(player);
+      return 'bad-slap'
     }
   }
 

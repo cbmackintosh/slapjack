@@ -9,26 +9,26 @@ class Player {
 
   playCard() {
     if (currentGame.activePlayer === this && this.hand.length > 0) {
-      console.log(this.hand[this.hand.length - 1]);
+      console.log(`${this.name} PLAYS THE ${this.hand[this.hand.length - 1].num} OF ${this.hand[this.hand.length - 1].suit}`);
       currentGame.deck.push(this.hand.pop());
       currentGame.changeActivePlayer(this);
     } else if (currentGame.activePlayer === this && this.hand.length === 0) {
-      console.log(`You have no cards so you pass`);
+      console.log(`${this.name} HAS NO CARDS AND MUST PASS`);
       currentGame.changeActivePlayer(this);
     } else {
-      console.log(`It's not your turn`);
+      console.log(`IT IS NOT ${this.name}'s TURN`);
     }
   }
 
   slap() {
-    currentGame.activePlayer = null;
-    if (currentGame.checkSlap(this) === 'good-slap' && this.myOpponentIs().hand.length === 0) {
-      this.wins++;
-      this.saveWinsToStorage();
-      currentGame.gameOver(this);
-      console.log(`${this.name} WINS!`);
-    } else {
+    if (currentGame.deck.length === 0) {
       return;
+    } else if (this.hand.length === 0) {
+      return currentGame.endGameCondition1(this);
+    } else if (this.myOpponentIs().hand.length === 0) {
+      return currentGame.endGameCondition2(this);
+    } else {
+      return currentGame.checkSlap(this)
     }
   }
 
