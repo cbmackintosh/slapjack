@@ -79,19 +79,18 @@ class Game {
 
   checkSlap(player) {
     if (this.deck[this.deck.length - 1].num === 'J') {
-      console.log(`${player.name} - SLAPJACK!`);
       this.winMiddleCards(player);
-      return `SLAPJACK! - ${player.name} WINS THE MIDDLE PILE!`;
+      return `SLAPJACK`;
     } else if (this.deck.length >= 2 && this.deck[this.deck.length - 1].num === this.deck[this.deck.length - 2].num) {
       this.winMiddleCards(player);
-      return `DOUBLE! - ${player.name} WINS THE MIDDLE PILE!`;
+      return `DOUBLE`;
     } else if (this.deck.length >= 3 && this.deck[this.deck.length - 1].num === this.deck[this.deck.length - 3].num) {
       this.winMiddleCards(player)
-      return `SANDWICH! - ${player.name} WINS THE MIDDLE PILE!`
+      return `SANDWICH`
     } else {
       this.forfeitCard(player);
       this.changeActivePlayer(player);
-      return `BAD SLAP FROM ${player.name}. FORFEITS CARD TO ${player.myOpponentIs().name}`;
+      return `BAD-SLAP`;
     }
   }
 
@@ -99,12 +98,12 @@ class Game {
     if (this.deck[this.deck.length - 1].num === 'J') {
       this.winMiddleCards(player);
       this.changeActivePlayer(player);
-      return `SLAPJACK! ${player.name} WINS THE MIDDLE PILE AND STAYS ALIVE!`
+      return `SAVING-SLAP`
     } else {
       player.myOpponentIs().wins++;
       player.myOpponentIs().saveWinsToStorage();
       this.gameOver(player.myOpponentIs());
-      return `BAD SLAP FROM ${player.name} - ${player.myOpponentIs().name} WINS THE GAME!`
+      return `LOSING-SLAP`
     }
   }
 
@@ -113,11 +112,11 @@ class Game {
       player.wins++;
       player.saveWinsToStorage();
       this.gameOver(player);
-      return `SLAPJACK! ${player.name} WINS THE GAME!`
+      return `WINNING-SLAP`
     } else {
       this.forfeitCard(player);
       this.changeActivePlayer(player);
-      return `BAD SLAP FROM ${player.name}, FORFEIT CARD TO ${player.myOpponentIs().name}`;
+      return `BAD-SLAP`;
     }
   }
 
