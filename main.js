@@ -5,12 +5,17 @@ var middlePile = document.querySelector('.middle-pile');
 var playerOneHand = document.querySelector('.player1-hand');
 var playerTwoHand = document.querySelector('.player2-hand');
 
+var playerOneWinCount = document.querySelector('.player1-win-count');
+var playerTwoWinCount = document.querySelector('.player2-win-count')
+
 document.addEventListener('keydown', controls)
 window.addEventListener('load', loadGame)
 
 function loadGame() {
   currentGame = new Game()
   currentGame.dealFullDeck()
+  playerOneWinCount.innerText = `WINS: ${currentGame.player1.wins}`
+  playerTwoWinCount.innerText = `WINS: ${currentGame.player2.wins}`
 }
 
 function controls() {
