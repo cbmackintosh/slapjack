@@ -5,7 +5,7 @@ class Game {
     this.player2 = new Player('PLAYER 2');
     this.activePlayer = null;
     this.deck = [
-      {num: 'A', suit: 'BLUE', img:'./assets/blue-01.png'},
+      {num: 'ACE', suit: 'BLUE', img:'./assets/blue-01.png'},
       {num: '2', suit: 'BLUE', img:'./assets/blue-02.png'},
       {num: '3', suit: 'BLUE', img:'./assets/blue-03.png'},
       {num: '4', suit: 'BLUE', img:'./assets/blue-04.png'},
@@ -15,10 +15,10 @@ class Game {
       {num: '8', suit: 'BLUE', img:'./assets/blue-08.png'},
       {num: '9', suit: 'BLUE', img:'./assets/blue-09.png'},
       {num: '10', suit: 'BLUE', img:'./assets/blue-10.png'},
-      {num: 'J', suit: 'BLUE', img:'./assets/blue-jack.png'},
-      {num: 'Q', suit: 'BLUE', img:'./assets/blue-queen.png'},
-      {num: 'K', suit: 'BLUE', img:'./assets/blue-king.png'},
-      {num: 'A', suit: 'GOLD', img:'./assets/gold-01.png'},
+      {num: 'JACK', suit: 'BLUE', img:'./assets/blue-jack.png'},
+      {num: 'QUEEN', suit: 'BLUE', img:'./assets/blue-queen.png'},
+      {num: 'KING', suit: 'BLUE', img:'./assets/blue-king.png'},
+      {num: 'ACE', suit: 'GOLD', img:'./assets/gold-01.png'},
       {num: '2', suit: 'GOLD', img:'./assets/gold-02.png'},
       {num: '3', suit: 'GOLD', img:'./assets/gold-03.png'},
       {num: '4', suit: 'GOLD', img:'./assets/gold-04.png'},
@@ -28,10 +28,10 @@ class Game {
       {num: '8', suit: 'GOLD', img:'./assets/gold-08.png'},
       {num: '9', suit: 'GOLD', img:'./assets/gold-09.png'},
       {num: '10', suit: 'GOLD', img:'./assets/gold-10.png'},
-      {num: 'J', suit: 'GOLD', img:'./assets/gold-jack.png'},
-      {num: 'Q', suit: 'GOLD', img:'./assets/gold-queen.png'},
-      {num: 'K', suit: 'GOLD', img:'./assets/gold-king.png'},
-      {num: 'A', suit: 'GREEN', img:'./assets/green-01.png'},
+      {num: 'JACK', suit: 'GOLD', img:'./assets/gold-jack.png'},
+      {num: 'QUEEN', suit: 'GOLD', img:'./assets/gold-queen.png'},
+      {num: 'KING', suit: 'GOLD', img:'./assets/gold-king.png'},
+      {num: 'ACE', suit: 'GREEN', img:'./assets/green-01.png'},
       {num: '2', suit: 'GREEN', img:'./assets/green-02.png'},
       {num: '3', suit: 'GREEN', img:'./assets/green-03.png'},
       {num: '4', suit: 'GREEN', img:'./assets/green-04.png'},
@@ -41,10 +41,10 @@ class Game {
       {num: '8', suit: 'GREEN', img:'./assets/green-08.png'},
       {num: '9', suit: 'GREEN', img:'./assets/green-09.png'},
       {num: '10', suit: 'GREEN', img:'./assets/green-10.png'},
-      {num: 'J', suit: 'GREEN', img:'./assets/green-jack.png'},
-      {num: 'Q', suit: 'GREEN', img:'./assets/green-queen.png'},
-      {num: 'K', suit: 'GREEN', img:'./assets/green-king.png'},
-      {num: 'A', suit: 'RED', img:'./assets/red-01.png'},
+      {num: 'JACK', suit: 'GREEN', img:'./assets/green-jack.png'},
+      {num: 'QUEEN', suit: 'GREEN', img:'./assets/green-queen.png'},
+      {num: 'KING', suit: 'GREEN', img:'./assets/green-king.png'},
+      {num: 'AACE', suit: 'RED', img:'./assets/red-01.png'},
       {num: '2', suit: 'RED', img:'./assets/red-02.png'},
       {num: '3', suit: 'RED', img:'./assets/red-03.png'},
       {num: '4', suit: 'RED', img:'./assets/red-04.png'},
@@ -54,9 +54,9 @@ class Game {
       {num: '8', suit: 'RED', img:'./assets/red-08.png'},
       {num: '9', suit: 'RED', img:'./assets/red-09.png'},
       {num: '10', suit: 'RED', img:'./assets/red-10.png'},
-      {num: 'J', suit: 'RED', img:'./assets/red-jack.png'},
-      {num: 'Q', suit: 'RED', img:'./assets/red-queen.png'},
-      {num: 'K', suit: 'RED', img:'./assets/red-king.png'},
+      {num: 'JACK', suit: 'RED', img:'./assets/red-jack.png'},
+      {num: 'QUEEN', suit: 'RED', img:'./assets/red-queen.png'},
+      {num: 'KING', suit: 'RED', img:'./assets/red-king.png'},
     ];
   }
 
@@ -72,13 +72,8 @@ class Game {
     this.activePlayer = this.player1;
   }
 
-  changeActivePlayer(player) {
-    this.activePlayer = player.myOpponentIs();
-    console.log(`IT IS ${this.activePlayer.name}'s TURN`);
-  }
-
   checkSlap(player) {
-    if (this.deck[this.deck.length - 1].num === 'J') {
+    if (this.deck[this.deck.length - 1].num === 'JACK') {
       this.winMiddleCards(player);
       return `SLAPJACK`;
     } else if (this.deck.length >= 2 && this.deck[this.deck.length - 1].num === this.deck[this.deck.length - 2].num) {
@@ -89,13 +84,13 @@ class Game {
       return `SANDWICH`
     } else {
       this.forfeitCard(player);
-      this.changeActivePlayer(player);
+      this.activePlayer = player.myOpponentIs();
       return `BAD-SLAP`;
     }
   }
 
   endGameCondition1(player) {
-    if (this.deck[this.deck.length - 1].num === 'J') {
+    if (this.deck[this.deck.length - 1].num === 'JACK') {
       this.winMiddleCards(player);
       this.changeActivePlayer(player);
       return `SAVING-SLAP`
@@ -108,7 +103,7 @@ class Game {
   }
 
   endGameCondition2(player) {
-    if (this.deck[this.deck.length - 1].num === 'J') {
+    if (this.deck[this.deck.length - 1].num === 'JACK') {
       player.wins++;
       player.saveWinsToStorage();
       this.gameOver(player);
@@ -123,7 +118,7 @@ class Game {
   winMiddleCards(player) {
     player.hand = player.hand.concat(this.deck.splice(0, this.deck.length));
     this.shuffleCards(player.hand);
-    this.changeActivePlayer(player);
+    this.activePlayer = player.myOpponentIs();
   }
 
   forfeitCard(player) {
