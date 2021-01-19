@@ -27,18 +27,21 @@ function controls(event) {
     playDOMResponse(currentGame.player2.playCard(), currentGame.player2.name);
   } else if (event.key === 'f') {
     slapDOMResponse(currentGame.player1.slap(), currentGame.player1);
+    new Audio('./assets/slap.mp3').play();
   } else if (event.key === 'j') {
     slapDOMResponse(currentGame.player2.slap(), currentGame.player2);
+    new Audio('./assets/slap.mp3').play();
   }
 }
 
 function playDOMResponse(returnedString, player) {
   if (returnedString === 'VALID-PLAY' || returnedString === 'SKIP-OPPONENT') {
     gameLog.innerText = `${player} PLAYS THE ${currentGame.deck[currentGame.deck.length - 1].num} OF ${currentGame.deck[currentGame.deck.length - 1].suit}.`;
+    new Audio('./assets/card.mp3').play();
     renderCard();
   } else if (returnedString === 'RESHUFFLE'){
     gameLog.innerText = `BOTH PLAYERS ARE OUT OF CARDS! ${player} GETS THE GAME DECK AND RESHUFFLES!`;
-    new Audio('./assets/shuffling-cards-1.mp3').play();
+    new Audio('./assets/shuffle.mp3').play();
   } else {
     return;
   }
@@ -55,11 +58,11 @@ function slapDOMResponse(returnedString, player) {
     gameLog.innerText = `SLAPJACK! ${player.name} STAYS ALIVE!`;
   } else if (returnedString === 'LOSING-SLAP') {
     gameLog.innerText = `BAD SLAP! ${player.name} LOSES! GAME RESET`;
-    new Audio('./assets/shuffling-cards-1.mp3').play();
+    new Audio('./assets/shuffle.mp3').play();
     updateWinCounts();
   } else if (returnedString === 'WINNING-SLAP') {
     gameLog.innerText = `SLAPJACK! ${player.name} WINS! GAME RESET`;
-    new Audio('./assets/shuffling-cards-1.mp3').play();
+    new Audio('./assets/shuffle.mp3').play();
     updateWinCounts();
   } else if (returnedString === 'INVALID-SLAP') {
     return;
