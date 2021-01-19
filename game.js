@@ -44,7 +44,7 @@ class Game {
       {num: 'JACK', suit: 'GREEN', img:'./assets/green-jack.png'},
       {num: 'QUEEN', suit: 'GREEN', img:'./assets/green-queen.png'},
       {num: 'KING', suit: 'GREEN', img:'./assets/green-king.png'},
-      {num: 'AACE', suit: 'RED', img:'./assets/red-01.png'},
+      {num: 'ACE', suit: 'RED', img:'./assets/red-01.png'},
       {num: '2', suit: 'RED', img:'./assets/red-02.png'},
       {num: '3', suit: 'RED', img:'./assets/red-03.png'},
       {num: '4', suit: 'RED', img:'./assets/red-04.png'},
@@ -92,7 +92,7 @@ class Game {
   endGameCondition1(player) {
     if (this.deck[this.deck.length - 1].num === 'JACK') {
       this.winMiddleCards(player);
-      this.changeActivePlayer(player);
+      this.activePlayer = player;
       return `SAVING-SLAP`
     } else {
       player.myOpponentIs().wins++;
@@ -110,7 +110,7 @@ class Game {
       return `WINNING-SLAP`
     } else {
       this.forfeitCard(player);
-      this.changeActivePlayer(player);
+      this.activePlayer = player.myOpponentIs();
       return `BAD-SLAP`;
     }
   }
