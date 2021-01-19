@@ -35,6 +35,8 @@ function playDOMResponse(returnedString, player) {
   if (returnedString === 'VALID-PLAY' || returnedString === 'SKIP-OPPONENT') {
     gameLog.innerText = `${player} PLAYS THE ${currentGame.deck[currentGame.deck.length - 1].num} OF ${currentGame.deck[currentGame.deck.length - 1].suit}.`;
     renderCard();
+  } else if (returnedString === 'RESHUFFLE'){
+    gameLog.innerText = `BOTH PLAYERS ARE OUT OF CARDS! ${player} GETS THE GAME DECK AND RESHUFFLES!`;
   } else {
     return;
   }
@@ -44,17 +46,17 @@ function playDOMResponse(returnedString, player) {
 
 function slapDOMResponse(returnedString, player) {
   if (returnedString === 'SLAPJACK' || returnedString === 'DOUBLE' || returnedString === 'SANDWICH') {
-    gameLog.innerText = `${returnedString}! ${player.name} WINS THE MIDDLE PILE!`
+    gameLog.innerText = `${returnedString}! ${player.name} WINS THE MIDDLE PILE!`;
   } else if (returnedString === 'BAD-SLAP') {
     gameLog.innerText = `BAD SLAP FROM ${player.name} - FORFEITS THEIR TOP CARD TO ${player.myOpponentIs().name}`;
   } else if (returnedString === 'SAVING-SLAP') {
-    gameLog.innerText = `SLAPJACK! ${player.name} STAYS ALIVE!`
+    gameLog.innerText = `SLAPJACK! ${player.name} STAYS ALIVE!`;
   } else if (returnedString === 'LOSING-SLAP') {
-    gameLog.innerText = `BAD SLAP! ${player.name} LOSES! GAME RESET`
-    updateWinCounts()
+    gameLog.innerText = `BAD SLAP! ${player.name} LOSES! GAME RESET`;
+    updateWinCounts();
   } else if (returnedString === 'WINNING-SLAP') {
-    gameLog.innerText = `SLAPJACK! ${player.name} WINS! GAME RESET`
-    updateWinCounts()
+    gameLog.innerText = `SLAPJACK! ${player.name} WINS! GAME RESET`;
+    updateWinCounts();
   } else if (returnedString === 'INVALID-SLAP') {
     return;
   }
@@ -78,7 +80,7 @@ function highlightActivePlayer() {
 }
 
 function adjustAllCardsVisibility() {
-  adjustCardVisibility(currentGame.deck, middlePile)
+  adjustCardVisibility(currentGame.deck, middlePile);
   adjustCardVisibility(currentGame.player1.hand, playerOneHand);
   adjustCardVisibility(currentGame.player2.hand, playerTwoHand);
 }

@@ -12,23 +12,28 @@ class Player {
       currentGame.deck.push(this.hand.pop());
       currentGame.activePlayer = this.myOpponentIs();
       return 'VALID-PLAY';
-    } else if (currentGame.activePlayer === this && !this.myOpponentIs().hand.length) {
+    } else if (currentGame.activePlayer === this && this.hand.length && !this.myOpponentIs().hand.length) {
       currentGame.deck.push(this.hand.pop());
       currentGame.activePlayer = this;
       return 'SKIP-OPPONENT';
+    } else if (currentGame.activePlayer === this && currentGame.deck.length === 52) {
+      this.hand = this.hand.concat(currentGame.deck.splice(0, currentGame.deck.length));
+      currentGame.shuffleCards(this.hand);
+      currentGame.activePlayer = this;
+      return 'RESHUFFLE';
     } else {
       return 'INVALID-PLAY';
     }
   }
 
   slap() {
-    if (!this.hand.length) {
+    if (!this.hand.length && currentGame.deck.length) {
       return currentGame.endGameCondition1(this);
-    } else if (!this.myOpponentIs().hand.length) {
+    } else if (!this.myOpponentIs().hand.length && currentGame.deck.length) {
       return currentGame.endGameCondition2(this);
     } else if (currentGame.deck.length){
       return currentGame.checkSlap(this);
-    } else {
+    } else if (!currentGame.deck.length) {
       return 'INVALID-SLAP';
     }
   }

@@ -56,7 +56,7 @@ class Game {
       {num: '10', suit: 'HEARTS', img:'./assets/red-10.png'},
       {num: 'JACK', suit: 'HEARTS', img:'./assets/red-jack.png'},
       {num: 'QUEEN', suit: 'HEARTS', img:'./assets/red-queen.png'},
-      {num: 'KING', suit: 'HEARTS', img:'./assets/red-king.png'},
+      {num: 'KING', suit: 'HEARTS', img:'./assets/red-king.png'}
     ];
   }
 
@@ -93,12 +93,12 @@ class Game {
     if (this.deck[this.deck.length - 1].num === 'JACK') {
       this.winMiddleCards(player);
       this.activePlayer = player;
-      return `SAVING-SLAP`
+      return `SAVING-SLAP`;
     } else {
       player.myOpponentIs().wins++;
       player.myOpponentIs().saveWinsToStorage();
       this.gameOver(player.myOpponentIs());
-      return `LOSING-SLAP`
+      return `LOSING-SLAP`;
     }
   }
 
@@ -107,7 +107,7 @@ class Game {
       player.wins++;
       player.saveWinsToStorage();
       this.gameOver(player);
-      return `WINNING-SLAP`
+      return `WINNING-SLAP`;
     } else {
       this.forfeitCard(player);
       this.activePlayer = player.myOpponentIs();
