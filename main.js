@@ -16,6 +16,7 @@ function loadGame() {
   currentGame = new Game();
   currentGame.dealFullDeck();
   updateWinCounts();
+  adjustAllCardsVisibility();
   highlightActivePlayer();
 }
 
@@ -37,6 +38,7 @@ function playDOMResponse(returnedString, player) {
     renderCard();
   } else if (returnedString === 'RESHUFFLE'){
     gameLog.innerText = `BOTH PLAYERS ARE OUT OF CARDS! ${player} GETS THE GAME DECK AND RESHUFFLES!`;
+    new Audio('./assets/shuffling-cards-1.mp3').play();
   } else {
     return;
   }
@@ -53,9 +55,11 @@ function slapDOMResponse(returnedString, player) {
     gameLog.innerText = `SLAPJACK! ${player.name} STAYS ALIVE!`;
   } else if (returnedString === 'LOSING-SLAP') {
     gameLog.innerText = `BAD SLAP! ${player.name} LOSES! GAME RESET`;
+    new Audio('./assets/shuffling-cards-1.mp3').play();
     updateWinCounts();
   } else if (returnedString === 'WINNING-SLAP') {
     gameLog.innerText = `SLAPJACK! ${player.name} WINS! GAME RESET`;
+    new Audio('./assets/shuffling-cards-1.mp3').play();
     updateWinCounts();
   } else if (returnedString === 'INVALID-SLAP') {
     return;
@@ -90,6 +94,20 @@ function adjustCardVisibility(array, element) {
     element.classList.add('hidden');
   } else {
     element.classList.remove('hidden');
+  }
+  applyStackEffect(array, element)
+}
+
+function applyStackEffect(array, element) {
+  if (array.length <= 1) {
+    element.classList.remove('stack-effect-thin');
+    element.classList.remove('stack-effect-thick');
+  } else if (array.length < 5) {
+    element.classList.add('stack-effect-thin');
+    element.classList.remove('stack-effect-thick');
+  } else {
+    element.classList.remove('stack-effect-thin');
+    element.classList.add('stack-effect-thick');
   }
 }
 
