@@ -84,7 +84,7 @@ function adjustAllCardsVisibility() {
 }
 
 function adjustCardVisibility(array, element) {
-  if (array.length === 0) {
+  if (!array.length) {
     element.classList.add('hidden');
   } else {
     element.classList.remove('hidden');
